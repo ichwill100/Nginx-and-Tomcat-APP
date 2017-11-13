@@ -1,0 +1,25 @@
+portal:
+  image: nginx
+  ports:
+   - "80:80"
+  volumes:
+   - /home/saulramosvaca/git/Nginx-and-Tomcat-APP/default.conf:/etc/nginx/conf.d/default.conf
+  links:
+   - tomcatOne:tomcat1
+   - tomcatTwo:tomcat2
+   - tomcatThree:tomcat3
+tomcatOne:
+  image: tomcat:7-jre8
+  volumes:
+   - /home/saulramosvaca/git/Nginx-and-Tomcat-APP/server.xml:/usr/local/tomcat/conf/server.xml
+   - /home/saulramosvaca/git/Nginx-and-Tomcat-APP/webapps:/usr/local/tomcat/webapps
+tomcatTwo:
+  image: tomcat:7-jre8
+  volumes:
+   - /home/saulramosvaca/git/Nginx-and-Tomcat-APP/server.xml:/usr/local/tomcat/conf/server.xml
+   - /home/saulramosvaca/git/Nginx-and-Tomcat-APP/webapps:/usr/local/tomcat/webapps
+tomcatThree:
+  image: tomcat:7-jre8
+  volumes:
+   - /home/saulramosvaca/git/Nginx-and-Tomcat-APP/server.xml:/usr/local/tomcat/conf/server.xml
+   - /home/saulramosvaca/git/Nginx-and-Tomcat-APP/webapps:/usr/local/tomcat/webapps
